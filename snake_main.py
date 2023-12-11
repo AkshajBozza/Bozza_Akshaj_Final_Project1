@@ -30,7 +30,7 @@ class SNAKE:
     def draw_snake(self):
         for block in self.body:
             block_rect = pygame.Rect(block.x * cell_size, block.y * cell_size, cell_size, cell_size)
-            pygame.draw.rect(screen, (200,0,0), block_rect)
+            pygame.draw.rect(screen, (50, 105, 194), block_rect)
 
     def move_snake(self):
         if self.new_block == True:
@@ -61,7 +61,7 @@ class FRUIT:
     
     def draw_fruit(self):
         fruit_rect = pygame.Rect(self.pos.x * cell_size,self.pos.y * cell_size,cell_size, cell_size)
-        pygame.draw.rect(screen, (0,0,0), fruit_rect)
+        pygame.draw.rect(screen, (255, 11, 3), fruit_rect)
     
 
 
@@ -105,7 +105,7 @@ screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_si
 clock = pygame.time.Clock()
 main_game = MAIN()
 SCREEN_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(SCREEN_UPDATE, 150)
+pygame.time.set_timer(SCREEN_UPDATE, 100)
 
 while True:
     for event in pygame.event.get():
@@ -127,7 +127,7 @@ while True:
             if event.key == pygame.K_LEFT:
                 if main_game.snake.direction.x != 1:
                     main_game.snake.direction = Vector2(-1,0)
-    screen.fill((175,215,70))
+    screen.fill((175,215,70)) # This is the color for the screen
     main_game.draw_elements()
     pygame.display.update()
     clock.tick(60)
