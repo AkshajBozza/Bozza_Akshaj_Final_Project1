@@ -10,7 +10,8 @@ pygame.init()
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 100) # setting the speed at which the snake moves
 screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size)) # the dimensions of the grid
-
+game_folder = os.path.dirname(__file__) #getting the needed images to play the game
+#inspiration from movement: https://www.geeksforgeeks.org/snake-game-in-python-using-pygame-module/
 class SNAKE:
     def __init__(self):
         self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)] #creating a default length and position for the snake
@@ -18,7 +19,7 @@ class SNAKE:
         self.new_block = False #there should not be a new_block created now because the snake has not collided
     
     def draw_snake(self):
-        for block in self.body:
+        for block in self.body: #iterating through every element of the snake's body to print it
             block_rect = pygame.Rect(block.x * cell_size, block.y * cell_size, cell_size, cell_size) #rectangularly creating each part of the snake so that it fully occupies the required cells
             pygame.draw.rect(screen, BLUE, block_rect) #drawing it
 
@@ -36,18 +37,18 @@ class SNAKE:
     def add_block(self):
         self.new_block = True # a new block needs to be created upon collision
 
+#knowledge about Vector2: https://www.trccompsci.online/mediawiki/index.php/Vectors_in_PyGame
 
-
-apple = pygame.image.load("apple.png").convert_alpha()
+apple = pygame.image.load(os.path.join(game_folder, "apple.png")).convert_alpha()
 class FRUIT:
     def __init__(self):
         self.x = randint(0,cell_number-1) #assigning a random position to the fruit
         self.y = randint(0,cell_number-1)
-        self.pos = Vector2(self.x, self.y)
+        self.pos = Vector2(self.x, self.y) #storing the x and y pos in a vector
     
     def randomize(self):
         self.x = randint(0,cell_number-1) #this function is called whenever the snake's head collides with the fruit, giving the fruit a new random position
-        self.y = randint(0,cell_number-1) # need to add code such that the fruit cannot appear in a place that the snake's body is occupying
+        self.y = randint(0,cell_number-1) 
         self.pos = Vector2(self.x, self.y)
     
     def draw_fruit(self):
@@ -72,7 +73,7 @@ class MAIN:
     def __init__(self):
         self.snake = SNAKE() #creating the objects so both the snake and fruit can be manipulated in the same class
         self.fruit = FRUIT()
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.Font(None, 36) #creating a default font
         self.screen = screen
     def update(self):
         self.snake.move_snake() #moving the snake

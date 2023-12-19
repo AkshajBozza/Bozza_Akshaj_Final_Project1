@@ -9,12 +9,7 @@ Goals:
 3) have the snake expand in length each time it consumes an apple
 4) terminate the game when the snake either collides with itself or with the borders of the screen
 
-MAYBE
-1) adding power-ups such as a score multiplier or one that expands the size of the screen or one that increases/decreases the speed of the snake
-2) adding some obstacles (maybe not feasible if the snake achieves a longer length) -- maybe one to reduce score without reducing length
-3) sound-effects
-4) letting the player customize the look of the snake before playing
-
+I wanted to solve the problem of movement, since the snake's movement is somewhat complicated. In addition, I wanted to solve the issue of elongation. From my previous experiences in programming
 '''
 
 # importing the necesscary contents for the game

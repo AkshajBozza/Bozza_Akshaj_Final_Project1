@@ -2,7 +2,7 @@
 
 
 ## Overview
-I want to create a Snake game with all the classic rules but with a few extra features.
+I want to create a Snake game with all the classic rules 
 
 ## Description
 This project will function similarly to the classic Snake game. Using arrow keys, you will be able to move the snake sprite, and there will be randomly generated "foods" that upon consumption by the snake, will elongate its length. Additionally, if the snake collides with the borders of the game or hits its own body, the game will end as the player will have lost. There will also be a score shown for each food that the snake consumes. Potentially, there may be a power-up that increases the snake's score without increasing its length or other obstacles that may reduce the score, but the standard version won't have any features that can decrease the score. It will either be a score increase or game over.
