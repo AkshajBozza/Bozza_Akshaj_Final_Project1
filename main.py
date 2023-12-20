@@ -11,6 +11,7 @@ Goals:
 
 I wanted to solve the problem of movement, since the snake's movement is somewhat complicated. In addition, I wanted to solve the issue of elongation. From my previous experiences in programming
 '''
+#general inspiration (more for the entire game rather than a specific concept is in the README file)
 
 # importing the necesscary contents for the game
 import sprites
@@ -43,7 +44,7 @@ while True:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a: #if the sprite is not currently moving right
                 if main_game.snake.direction.x != 1:
                     main_game.snake.direction = Vector2(-1,0)
-    screen.fill(L_GREEN) # This is the color for the screen
+    screen.fill(D_BLUE) # This is the color for the screen
     main_game.draw_elements() # drawing the original snake body with three default blocks and a randomly generated fruit
     pygame.display.update() 
     

@@ -21,7 +21,7 @@ class SNAKE:
     def draw_snake(self):
         for block in self.body: #iterating through every element of the snake's body to print it
             block_rect = pygame.Rect(block.x * cell_size, block.y * cell_size, cell_size, cell_size) #rectangularly creating each part of the snake so that it fully occupies the required cells
-            pygame.draw.rect(screen, BLUE, block_rect) #drawing it
+            pygame.draw.rect(screen, BLACK, block_rect) #drawing it
 
     def move_snake(self):
         if self.new_block == True: # if a new block needs to be created (collision with fruit)
@@ -81,7 +81,6 @@ class MAIN:
         self.check_fail()
     
     def draw_elements(self):
-        self.draw_grass()
         self.fruit.draw_fruit() #doing it all one one function to make the main.py loop much clearer
         self.snake.draw_snake()
         self.draw_score()
@@ -103,24 +102,13 @@ class MAIN:
         self.snake.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)] #creating a default length and position for the snake
         self.snake.direction = Vector2(0,0) #creating the original direction [right] using vectors
         self.snake.new_block = False #there should not be a new_block created now because the snake has not collided
-    def draw_grass(self):
-        for row in range(cell_number): #iterating through the # of rows
-            if row % 2 == 0: #if it's every second row
-                for col in range(cell_number):
-                    if col % 2 == 0: #and every 2nd column, draw a dark green rectangle (grid pattern)
-                        pygame.draw.rect(screen, D_GREEN, pygame.Rect(col*cell_size, row * cell_size, cell_size, cell_size))
-            else:
-                for col in range(cell_number): # otherwise
-                    if col % 2 != 0: #for every 2nd column (and odd row)
-                        pygame.draw.rect(screen, D_GREEN, pygame.Rect(col*cell_size, row * cell_size, cell_size, cell_size))
     
 
     def draw_score(self):
         score_text = "Score: " + str(len(self.snake.body) - 3)
-        score_surface = self.font.render(score_text, True, (255, 255, 255))  # You can change the color
-
-        # Adjust the position where you want to display the score
-        score_rect = score_surface.get_rect(center=(100, 50))  # You can adjust the coordinates
+        score_surface = self.font.render(score_text, True, (255, 255, 255))  #creating a surface to render the score on
+        # rectangular source for code
+        score_rect = score_surface.get_rect(center=(100, 50))  
 
         # Blit the score onto the screen
         self.screen.blit(score_surface, score_rect)
